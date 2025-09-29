@@ -3,12 +3,13 @@ MP3 Player - Приложения для проигрывания mp3 файло
 """
 
 import tkinter as tk
-from scr.Interface.interface import MP3PlayerInterface
+from scr.Interface.interface import Interface
 
 
 def main():
+    """Запуск приложения"""
     root = tk.Tk()
-    MP3PlayerInterface(root)
+    Interface(root)
     root.mainloop()
 
 

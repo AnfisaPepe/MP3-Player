@@ -1,3 +1,4 @@
+"""Интерфейс"""
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox, simpledialog
 import pygame
@@ -5,7 +6,8 @@ from scr.Playlist.play_list import PlayList
 from scr.Composition.composition import Composition
 
 
-class MP3PlayerInterface:
+class Interface:
+    """Интерфейс"""
     def __init__(self, root):
         self.current_track_var = None
         self.playlist_combo = None
@@ -25,6 +27,7 @@ class MP3PlayerInterface:
         self.setup_ui()
 
     def setup_ui(self):
+        """Установка окна"""
         # Основное окно
         main_frame = ttk.Frame(
             self.root,
@@ -297,10 +300,10 @@ class MP3PlayerInterface:
                 composition = Composition(file_path)
                 self.current_playlist.append_right(composition)
                 added_count += 1
-            except Exception as e:
+            except Exception as exception:
                 messagebox.showerror(
                     "Ошибка",
-                    f"Не удалось добавить трек: {e}"
+                    f"Не удалось добавить трек: {exception}"
                 )
 
         if added_count > 0:
@@ -456,10 +459,10 @@ class MP3PlayerInterface:
 
             # Подготовка следующего трека
             self.root.after(1000, self.check_track_finished)
-        except pygame.error as e:
+        except pygame.error as exception:
             messagebox.showerror(
                 "Ошибка",
-                f"Не удалось воспроизвести трек: {e}"
+                f"Не удалось воспроизвести трек: {exception}"
             )
 
     def check_track_finished(self):

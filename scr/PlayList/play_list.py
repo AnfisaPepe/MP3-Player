@@ -13,7 +13,7 @@ class PlayList(LinkedList):
         """Проигрывание всех песен, начиная с выбранного"""
         if self.is_empty():
             return
-        
+
         if item is None:
             self.current_node = self.first_item
         else:
@@ -24,14 +24,14 @@ class PlayList(LinkedList):
                     break
             else:
                 self.current_node = self.first_item
-        
+
         self.is_playing = True
 
     def next_track(self):
         """Переместить трек ниже"""
         if self.is_empty() or self.current_node is None:
             return None
-        
+
         self.current_node = self.current_node.next_item
         return self.current_node.current_item
 
@@ -39,7 +39,7 @@ class PlayList(LinkedList):
         """Переместить трек выше"""
         if self.is_empty() or self.current_node is None:
             return None
-        
+
         self.current_node = self.current_node.previous_item
         return self.current_node.current_item
 

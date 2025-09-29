@@ -2,8 +2,8 @@
 
 __version__ = "1.0.0"
 
-from .interface import MP3PlayerInterface
+from .interface import Interface
 
 __all__ = [
-    "MP3PlayerInterface"
+    "Interface"
 ]

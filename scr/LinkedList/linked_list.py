@@ -10,9 +10,11 @@ class LinkedList:
         self.size = 0
 
     def is_empty(self):
+        """Если пусто"""
         return self.size == 0
 
     def append_left(self, item):
+        """Добавить голову"""
         new_item = LinkedListItem(item)
         if self.is_empty():
             new_item.next_item = new_item
@@ -28,6 +30,7 @@ class LinkedList:
         self.size += 1
 
     def append_right(self, item):
+        """Добавить в хвост"""
         new_item = LinkedListItem(item)
         if self.is_empty():
             new_item.next_item = new_item
@@ -43,6 +46,7 @@ class LinkedList:
         self.size += 1
 
     def _remove_node(self, item):
+        """Удалить трек"""
         if self.size == 0 or item is None:
             return
         if self.size == 1 and item is self.first_item:
@@ -61,6 +65,7 @@ class LinkedList:
         self.size -= 1
 
     def remove(self, item):
+        """Удалить"""
         if isinstance(item, LinkedListItem):
             self._remove_node(item)
             return
@@ -73,6 +78,7 @@ class LinkedList:
         raise ValueError(f"Трэк {item} не найден")
 
     def insert(self, previous_item, item):
+        """Добавление после предыдущего"""
         # Вставить новый элемент после предыдущего
         new_item = LinkedListItem(item)
         if self.is_empty() or previous_item is None:
@@ -89,6 +95,7 @@ class LinkedList:
         self.size += 1
 
     def iter_nodes(self):
+        """Итерация узлов"""
         if self.is_empty():
             return
         yield self.first_item
