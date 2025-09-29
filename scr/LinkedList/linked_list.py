@@ -1,10 +1,12 @@
 """Двусвязный список"""
+from typing import Iterator
+
 from scr.Linkedlistitem.linked_list_item import LinkedListItem
 
 
 class LinkedList:
     """Двусвязный список"""
-    def __init__(self):
+    def __init__(self) -> None:
         self.first_item = None
         self.last_item = None
         self.size = 0
@@ -13,7 +15,7 @@ class LinkedList:
         """Если пусто"""
         return self.size == 0
 
-    def append_left(self, item):
+    def append_left(self, item) -> None:
         """Добавить голову"""
         new_item = LinkedListItem(item)
         if self.is_empty():
@@ -29,7 +31,7 @@ class LinkedList:
             self.first_item = new_item
         self.size += 1
 
-    def append_right(self, item):
+    def append_right(self, item) -> None:
         """Добавить в хвост"""
         new_item = LinkedListItem(item)
         if self.is_empty():
@@ -45,7 +47,7 @@ class LinkedList:
             self.last_item = new_item
         self.size += 1
 
-    def _remove_node(self, item):
+    def _remove_node(self, item) -> None:
         """Удалить трек"""
         if self.size == 0 or item is None:
             return
@@ -64,7 +66,7 @@ class LinkedList:
             self.last_item = prev_item
         self.size -= 1
 
-    def remove(self, item):
+    def remove(self, item) -> None:
         """Удалить"""
         if isinstance(item, LinkedListItem):
             self._remove_node(item)
@@ -77,7 +79,7 @@ class LinkedList:
                 return
         raise ValueError(f"Трэк {item} не найден")
 
-    def insert(self, previous_item, item):
+    def insert(self, previous_item, item) -> None:
         """Добавление после предыдущего"""
         # Вставить новый элемент после предыдущего
         new_item = LinkedListItem(item)
@@ -94,7 +96,7 @@ class LinkedList:
             self.last_item = new_item
         self.size += 1
 
-    def iter_nodes(self):
+    def iter_nodes(self) -> None:
         """Итерация узлов"""
         if self.is_empty():
             return
@@ -104,7 +106,7 @@ class LinkedList:
             yield node
             node = node.next_item
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator:
         if self.is_empty():
             return iter(())
 
@@ -113,7 +115,7 @@ class LinkedList:
                 yield node.current_item
         return generator()
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.size
 
     def append(self, item):
@@ -126,7 +128,7 @@ class LinkedList:
             return None
         return self.last_item.current_item
 
-    def __getitem__(self, index):
+    def __getitem__(self, index) -> LinkedListItem:
         """Получить элемент по индексу"""
         if not isinstance(index, int):
             raise TypeError("Индекс должен быть целым числом")
@@ -140,7 +142,7 @@ class LinkedList:
             current = current.next_item
         return current.current_item
 
-    def __reversed__(self):
+    def __reversed__(self) -> Iterator:
         """Для reversed()"""
         if self.is_empty():
             return iter(())
@@ -151,7 +153,7 @@ class LinkedList:
             yield current.current_item
             current = current.previous_item
 
-    def __contains__(self, item):
+    def __contains__(self, item) -> bool:
         if self.is_empty():
             return False
         for node in self.iter_nodes():

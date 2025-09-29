@@ -8,7 +8,7 @@ from scr.Composition.composition import Composition
 
 class Interface:
     """Интерфейс"""
-    def __init__(self, root):
+    def __init__(self, root) -> None:
         self.current_track_var = None
         self.playlist_combo = None
         self.playlist_var = None

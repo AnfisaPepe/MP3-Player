@@ -15,7 +15,7 @@ class LinkedListItem:
         self._previous_item = None
 
     @property
-    def next_item(self):
+    def next_item(self) -> Composition:
         """Getter"""
         return self._next_item
 
@@ -24,7 +24,7 @@ class LinkedListItem:
         self._next_item = item
 
     @property
-    def previous_item(self):
+    def previous_item(self) -> Composition:
         """Getter"""
         return self._previous_item
 
